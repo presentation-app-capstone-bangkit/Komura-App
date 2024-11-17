@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Komura</string>
+    <string name="title_activity_navigasi_login_and_registrasi">NavigasiLoginAndRegistrasi</string>
 </resources>
