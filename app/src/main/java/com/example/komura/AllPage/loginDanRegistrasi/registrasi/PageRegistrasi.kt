@@ -1,88 +1,168 @@
 package com.example.komura.AllPage.loginDanRegistrasi.registrasi
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.constraintlayout.compose.ConstraintLayout
-import com.example.komura.AllPage.loginDanRegistrasi.registrasi.ComponentRegistrasi.CardRegistrasi
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.komura.R
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PageRegistrasi() {
-    ConstraintLayout(
-        modifier = Modifier.fillMaxSize(),
+fun PageRegistrasi(navController: NavController) {
+    var name by remember { mutableStateOf("") }
+    var email by remember { mutableStateOf("") }
+    var password by remember { mutableStateOf("") }
+    var passwordVisible by remember { mutableStateOf(false) }
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(top = 40.dp, start = 30.dp, end = 30.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
         content = {
-            val (cardRegistrasi, row) = createRefs()
-            ConstraintLayout(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .constrainAs(row) {
-                        top.linkTo(parent.top)
-                    }
-                    .height(250.dp),
+            Text(
+                text = "Create an account",
+                fontSize = 25.sp
+            )
+            Spacer(modifier = Modifier.height(5.dp))
+            Row(
                 content = {
-                    val (text, logo) = createRefs()
-                    Column(
-                        modifier = Modifier
-                            .constrainAs(text) {
-                                top.linkTo(parent.top)
-                                start.linkTo(parent.start)
-                                end.linkTo(parent.end)
-                                bottom.linkTo(parent.bottom)
-                            }
-                            .offset(y = (-10).dp, x = (-100).dp),
-                        content = {
-                            Text(text = "KOMURA", fontSize = 28.sp)
-                            Text(
-                                text = "This app boots \nconfidance in public \nspeaking.",
-                                fontWeight = FontWeight.Light
-                            )
-                        }
-                    )
-
-                    Box(
-                        modifier = Modifier
-                            .offset(x = 60.dp, y = 15.dp)
-                            .size(250.dp)
-                            .constrainAs(logo) {
-                                end.linkTo(parent.end)
-                            },
-                        contentAlignment = Alignment.Center,
-                        content = {
-                            Icon(
-                                painter = painterResource(R.drawable.circle),
-                                contentDescription = null,
-                                tint = Color(0xff9a9a9a),
-                                modifier = Modifier
-                                    .size(250.dp)
-                            )
-                            Text(text = "LOGO/IMG")
-                        }
-                    )
-
+                    Text(text = "Already have an account? ", fontWeight = FontWeight.Light)
+                    Text(text = "Login", color = Color(0xff00a6ff), fontWeight = FontWeight.Light)
                 }
             )
-            CardRegistrasi(
+            Spacer(modifier = Modifier.height(40.dp))
+            TextField(
+                value = name,
+                onValueChange = { newName ->
+                    name = newName
+                },
+                placeholder = { Text(text = "Full Name") },
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    imeAction = ImeAction.Next
+                ),
+                keyboardActions = KeyboardActions.Default,
+                singleLine = true,
+                colors = TextFieldDefaults.textFieldColors(
+                    focusedIndicatorColor = Color.Transparent,
+                    unfocusedIndicatorColor = Color.Transparent,
+                    disabledIndicatorColor = Color.Transparent,
+                    errorIndicatorColor = Color.Transparent,
+                    containerColor = Color(0xffe6e6e6)
+                ),
+                modifier = Modifier.width(400.dp),
+                shape = RoundedCornerShape(10.dp)
+            )
+            Column(
+                modifier = Modifier.height(170.dp),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                content = {
+                    TextField(
+                        value = email,
+                        onValueChange = { newEmail ->
+                            email = newEmail
+                        },
+                        placeholder = { Text(text = "Email Address") },
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Next
+                        ),
+                        keyboardActions = KeyboardActions.Default,
+                        singleLine = true,
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            errorIndicatorColor = Color.Transparent,
+                            containerColor = Color(0xffe6e6e6)
+                        ),
+                        modifier = Modifier.width(400.dp),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+
+                    TextField(
+                        value = password,
+                        onValueChange = { newPass ->
+                            password = newPass
+                        },
+                        placeholder = { Text(text = "Password") },
+                        keyboardOptions = KeyboardOptions.Default.copy(
+                            imeAction = ImeAction.Next
+                        ),
+                        keyboardActions = KeyboardActions.Default,
+                        singleLine = true,
+                        visualTransformation = if (passwordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+                        trailingIcon = {
+                            val image = if (passwordVisible)
+                                R.drawable.show_password
+                            else R.drawable.hide_password
+
+                            IconButton(onClick = { passwordVisible = !passwordVisible }) {
+                                Icon(
+                                    painter = painterResource(image),
+                                    contentDescription = if (passwordVisible) "Hide password" else "Show password"
+                                )
+                            }
+                        },
+                        colors = TextFieldDefaults.textFieldColors(
+                            focusedIndicatorColor = Color.Transparent,
+                            unfocusedIndicatorColor = Color.Transparent,
+                            disabledIndicatorColor = Color.Transparent,
+                            errorIndicatorColor = Color.Transparent,
+                            containerColor = Color(0xffe6e6e6)
+                        ),
+                        modifier = Modifier.width(400.dp),
+                        shape = RoundedCornerShape(10.dp)
+                    )
+                }
+            )
+            Spacer(modifier = Modifier.height(30.dp))
+            Button(
                 modifier = Modifier
-                    .height(650.dp)
-                    .constrainAs(cardRegistrasi) {
-                        bottom.linkTo(parent.bottom)
-                    }
+                    .height(60.dp)
+                    .width(400.dp),
+                onClick = {
+                    navController.navigate("login")
+                },
+                content = {
+                    Text(text = "Continue")
+                },
+                shape = RoundedCornerShape(10.dp),
+                colors = ButtonDefaults.buttonColors(
+                   containerColor = Color(0xff00a6ff)
+                )
             )
         }
     )
@@ -91,5 +171,5 @@ fun PageRegistrasi() {
 @Preview(showBackground = true)
 @Composable
 private fun PageRegistrasiPrev() {
-    PageRegistrasi()
+    PageRegistrasi(rememberNavController())
 }

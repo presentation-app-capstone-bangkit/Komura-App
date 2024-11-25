@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Komura</string>
     <string name="title_activity_navigasi_login_and_registrasi">NavigasiLoginAndRegistrasi</string>
+    <string name="title_activity_support">ActivitySupport</string>
+    <string name="title_activity_account">ActivityAccount</string>
+    <string name="title_activity_learning_path1">ActivityLearningPath1</string>
+    <string name="title_activity_learning_path2">ActivityLearningPath2</string>
 </resources>

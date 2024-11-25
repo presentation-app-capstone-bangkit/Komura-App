@@ -13,8 +13,23 @@
         android:theme="@style/Theme.Komura"
         tools:targetApi="31">
         <activity
-            android:name=".AllPage.loginDanRegistrasi.NavigasiLoginAndRegistrasi"
-            android:exported="false"
+            android:name=".AllPage.pageSupport.ActivityLearningPath2"
+            android:exported="true"
+            android:label="@string/title_activity_learning_path2"
+            android:theme="@style/Theme.Komura" />
+        <activity
+            android:name=".AllPage.pageSupport.ActivityLearningPath1"
+            android:exported="true"
+            android:label="@string/title_activity_learning_path1"
+            android:theme="@style/Theme.Komura" />
+        <activity
+            android:name=".AllPage.pageSupport.ActivityAccount"
+            android:exported="true"
+            android:label="@string/title_activity_account"
+            android:theme="@style/Theme.Komura" />
+        <activity
+            android:name=".AllPage.loginDanRegistrasi.NavigasiActivityLoginAndRegistrasi"
+            android:exported="true"
             android:label="@string/title_activity_navigasi_login_and_registrasi"
             android:theme="@style/Theme.Komura" />
         <activity
