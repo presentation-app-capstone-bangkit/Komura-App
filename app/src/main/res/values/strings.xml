@@ -5,4 +5,8 @@
     <string name="title_activity_account">ActivityAccount</string>
     <string name="title_activity_learning_path1">ActivityLearningPath1</string>
     <string name="title_activity_learning_path2">ActivityLearningPath2</string>
+    <string name="title_activity_splash_screen">SplashScreenActivity</string>
+    <string name="title_activity_ambil_vidio">AmbilVidioActivity</string>
+    <string name="title_activity_audio">AudioActivity</string>
+    <string name="title_activity_test">testActivity</string>
 </resources>

@@ -21,9 +21,7 @@ class ActivityLearningPath1 : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             val navController = rememberNavController()
-            KomuraTheme {
                 PageLearningPath1(navController = navController)
-            }
         }
     }
 }

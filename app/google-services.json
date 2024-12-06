@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "665606747903",
+    "firebase_url": "https://komura-app-9ca8e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "komura-app-9ca8e",
+    "storage_bucket": "komura-app-9ca8e.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665606747903:android:e3e8003206b6db5941beca",
+        "android_client_info": {
+          "package_name": "com.example.komura"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEoU2JtSirifOHLdrKAy3kJz6WMEj08A8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:665606747903:android:d8befb1bb469bd8641beca",
+        "android_client_info": {
+          "package_name": "com.exemple.komura"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEoU2JtSirifOHLdrKAy3kJz6WMEj08A8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

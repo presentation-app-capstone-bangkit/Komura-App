@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
@@ -32,14 +33,12 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.zIndex
-import androidx.navigation.NavController
 import com.example.komura.R
 
 @Composable
 fun FabAddImg(
     onCameraClick: () -> Unit,
     onVoiceClick: () -> Unit,
-    navController: NavController
 ) {
     var expanded by remember { mutableStateOf(false) }
     val rotationAngle by animateFloatAsState(if (expanded) 45f else 0f)
@@ -66,9 +65,8 @@ fun FabAddImg(
                         content = {
                             IconButton(
                                 onClick = {
-                                    onCameraClick()
+                                    onVoiceClick()
                                     expanded = false
-                                    navController.navigate("Result")
                                 },
                                 modifier = Modifier
                                     .clip(CircleShape)
@@ -76,9 +74,10 @@ fun FabAddImg(
                                     .zIndex(if (expanded) 1f else 0f),
                                 content = {
                                     Icon(
-                                        painter = painterResource(id = R.drawable.chat),
-                                        contentDescription = "camera",
-                                        tint = Color.White
+                                        painter = painterResource(id = R.drawable.takeaudio),
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(20.dp)
                                     )
                                 }
                             )
@@ -95,7 +94,7 @@ fun FabAddImg(
                         content = {
                             IconButton(
                                 onClick = {
-                                    onVoiceClick()
+                                    onCameraClick()
                                     expanded = false
                                 },
                                 modifier = Modifier
@@ -104,9 +103,10 @@ fun FabAddImg(
                                     .zIndex(if (expanded) 1f else 0f),
                                 content = {
                                     Icon(
-                                        painter = painterResource(id = R.drawable.show_password),
-                                        contentDescription = "Galeri",
-                                        tint = Color.White
+                                        painter = painterResource(id = R.drawable.takevidio),
+                                        contentDescription = null,
+                                        tint = Color.White,
+                                        modifier = Modifier.size(20.dp)
                                     )
                                 }
                             )

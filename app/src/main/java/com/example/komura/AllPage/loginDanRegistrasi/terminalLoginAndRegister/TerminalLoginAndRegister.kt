@@ -75,7 +75,7 @@ fun TerminalLoginAndRegister(navController: NavController) {
                         content = {
                             Button(
                                 onClick = {
-                                    navController.navigate("Login")
+                                    navController.navigate("Registrasi")
                                 },
                                 content = {
                                     Text(text = "Register")
@@ -89,7 +89,7 @@ fun TerminalLoginAndRegister(navController: NavController) {
                             Spacer(modifier = Modifier.width(10.dp))
                             OutlinedButton(
                                 onClick = {
-                                    navController.navigate("Registrasi")
+                                    navController.navigate("Login")
                                 },
                                 content = { Text(text = "Sing in") },
                                 shape = RoundedCornerShape(10.dp),

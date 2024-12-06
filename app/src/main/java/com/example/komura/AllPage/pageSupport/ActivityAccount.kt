@@ -19,9 +19,7 @@ class ActivityAccount : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            KomuraTheme {
-               PageSetting()
-            }
+               PageSetting(finish = { finish() })
         }
     }
 }

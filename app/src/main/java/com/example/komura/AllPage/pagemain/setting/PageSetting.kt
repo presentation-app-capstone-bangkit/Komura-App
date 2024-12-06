@@ -1,5 +1,7 @@
 package com.example.komura.AllPage.pagemain.setting
 
+import android.content.Context
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
@@ -20,14 +22,18 @@ import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -42,41 +48,76 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.komura.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PageSetting() {
-    var nama by remember { mutableStateOf("Martin Kelvin") }
+fun PageSetting(finish: () -> Unit) {
+//    val currentUser = FirebaseAuth.getInstance().currentUser
+    var nama by remember { mutableStateOf("") }
     var email by remember { mutableStateOf("MartinKelvin@gmail.com") }
+    val auth = FirebaseAuth.getInstance()
+    val db = FirebaseFirestore.getInstance()
+
+//    Log.e("get username:",currentUser.toString())
+//    Log.e("get username:",currentUser?.uid.toString())
+//    Log.e("get username:",currentUser?.displayName.toString())
+
+
+    LaunchedEffect(Unit) {
+        val userId = auth.currentUser?.uid
+        if (userId != null) {
+            db.collection("users").document(userId).get()
+                .addOnSuccessListener { document ->
+                    nama = document.getString("username") ?: "Username tidak ditemukan"
+                    email = document.getString("email") ?: "Email tidak ditemukan"
+                }
+                .addOnFailureListener {
+                    nama = "Gagal memuat username"
+                    email = "Gagal memuat email"
+                }
+        } else {
+            nama = "User belum login"
+            email = "User belum login"
+        }
+    }
+
     Scaffold(
         topBar = {
             TopAppBar(
                 title = {},
                 navigationIcon = {
-                    Icon(
-                        imageVector = Icons.Default.ArrowBack,
-                        contentDescription = null,
-                        modifier = Modifier.padding(start = 10.dp)
+                    IconButton (
+                        onClick = {
+                            finish()
+                        },
+                        content = {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = null,
+                                modifier = Modifier.size(20.dp)
+                            )
+                        }
                     )
                 },
                 actions = {
                     Icon(
                         painter = painterResource(R.drawable.pencil_edit),
                         contentDescription = null,
-                        modifier = Modifier.size(20.dp).clickable {
+                        modifier = Modifier
+                            .size(20.dp)
+                            .clickable {
 
-                        }
+                            }
                     )
                     Spacer(modifier = Modifier.padding(10.dp))
-                    Icon(
-                        imageVector = Icons.Default.MoreVert,
-                        contentDescription = null,
-                    )
-                    Spacer(modifier = Modifier.padding(10.dp))
+                    MoreVertMenuExample()
                 }
             )
         },
         content = {
+
             Column(
                 modifier = Modifier
                     .padding(it)
@@ -180,5 +221,5 @@ fun PageSetting() {
 @Preview(showBackground = true)
 @Composable
 private fun PageSettingPrev() {
-    PageSetting()
+    PageSetting(finish = {})
 }

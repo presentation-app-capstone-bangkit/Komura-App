@@ -19,9 +19,7 @@ class ActivityLearningPath2 : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            KomuraTheme {
-                PageLearningPath2()
-            }
+            PageLearningPath2()
         }
     }
 }
