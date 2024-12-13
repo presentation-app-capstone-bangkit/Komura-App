@@ -106,4 +106,4 @@ Acknowledgments
 	•	FFmpeg for video processing.
 	•	Jetpack Compose for UI design.
 
-Feel free to expand or modify this template as needed!
+
