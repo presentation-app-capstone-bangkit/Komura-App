@@ -30,9 +30,9 @@ Ensure you have the following:
 
 Installation
 
-	1.	Clone the repository: https://github.com/presentation-app-capstone-bangkit/Komura-App.git
+	1.	Clone the repository: [https://github.com/presentation-app-capstone-bangkit/Komura-App.git](https://github.com/presentation-app-capstone-bangkit/Komura-App.git)
 
-git clone https://github.com/presentation-app-capstone-bangkit/Komura-App.git
+git clone [https://github.com/presentation-app-capstone-bangkit/Komura-App.git](https://github.com/presentation-app-capstone-bangkit/Komura-App.git)
 
 
 	2.	Open the project in Android Studio.
